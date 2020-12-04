@@ -19,6 +19,15 @@ pipeline {
         }
       }
     }
+    stage('Saving') {
+      parallel {
+        stage('Saving_Termdeposit') {
+          steps {
+            sh 'docker exec -t constant_bigquery_etl python3 -m src.bigquery_merge merge_saving_termdeposit'
+          }
+        }
+      }
+    }
   }
   post {
     always {

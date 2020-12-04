@@ -10,7 +10,7 @@ pipeline {
         }
       }
     }
-    stage('Reserves') {
+    stage('Constant') {
       parallel {
         stage('Reserves') {
           steps {

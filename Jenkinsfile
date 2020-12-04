@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('User') {
           steps {
-            sh 'docker exec -t constant_bigquery_etl python3 -m src.bigquery_merge merge_users_line'
+            sh 'docker exec -t constant_bigquery_etl python3 -m src.bigquery_merge merge_users'
           }
         }
       }

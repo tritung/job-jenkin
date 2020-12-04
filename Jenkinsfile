@@ -8,10 +8,17 @@ pipeline {
             sh 'docker exec -t constant_bigquery_etl python3 -m src.bigquery_merge merge_users_line'
           }
         }
-
       }
     }
-
+    stage('Reserves') {
+      parallel {
+        stage('Reserves') {
+          steps {
+            sh 'docker exec -t constant_bigquery_etl python3 -m src.bigquery_merge merge_reserves'
+          }
+        }
+      }
+    }
   }
   post {
     always {
